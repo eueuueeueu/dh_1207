@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      padding-bottom: 260px;
+    }
+
+    .foo {
+      width: 300px;
+      height: 300px;
+    }
+
+    .bar {
+      border-radius: 30px;
+    }
+
+    .btn {
+      width: 350px;
+      height: 50px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>题目：给定一个字符串，将它转换为对象的格式</p>
+  <p>例如：</p>
+  <p>let str ='< img class="foo bar" id="baz" src="./abc.png" style="background-color: red;" alt="一张美丽的图片">';</p>
+  <p>转换为以下形式</p>
+  <p>let obj = {</p>
+  <p>tagName: "img",</p>
+  <p>&emsp;attrs: {</p>
+  <p>&emsp;&emsp;className: "foo bar",</p>
+  <p>&emsp;&emsp;id: "baz",</p>
+  <p>&emsp;&emsp;src: "abc.png",</p>
+  <p>&emsp;&emsp;style: "background-color: red;",</p>
+  <p>&emsp;&emsp;alt: "一张美丽的图片",</p>
+  <p>&emsp;},</p>
+  <p>};</p>
+  <form><button class="btn">点击此按钮将控制台的那串字符串渲染到页面上</button></form>
+  <!-- <img class="foo bar" src="./abc.png" alt="  1"> -->
+</body>
+<script>
+  // 题目：给定一个字符串，将它转换为对象的格式
+  // 例如：
+  /* 
+  let str =
+    ' <img class="foo bar" id="baz" src="./abc.png" style="background-color: red;" alt="一张美丽的图片">';
+      转换为以下形式
+    let obj = {
+      tagName: "img",
+      attrs: {
+        className: "foo bar",
+        id: "baz",
+        src: "abc.png",
+        style: "background-color: red;",
+        alt: "一张美丽的图片",
+      },
+    }; 
+  */
+  let string = ' <img         class     =     "foo bar"     id  =    "baz" src      =     "abc.png"    style  =  "background-color: red;" alt   =   "一张美丽的图片">    ';
+  function strConvertObj(str) {
+    let obj = { tagName: '', arrts: {} }
+    let nStr = str.trim().slice(1, -1)
+    // 取到元素名，也就是obj的第一个属性
+    obj.tagName = nStr.slice(0, nStr.indexOf(' '))
+    // 取到元素名后面的一串有规律的东西,因为不知道首尾有多少空格，所以就直接去除首尾空格
+    let nStrProperty = nStr.slice(nStr.indexOf(' '),).trim()
+    let arrnStr = nStrProperty.match(/[A-Za-z]+\s*=\s*("|')[^=]*\1/g)
+    for (let i = 0; i < arrnStr.length; i++) {
+      let key = arrnStr[i].split('=')[0].trim()
+      let value = arrnStr[i].split('=')[1].trim()
+      obj.arrts[key] = value.slice(1, -1)
+    }
+    return obj
+  }
+  console.log('传入前的字符串：', string);
+  console.log('处理后的字符串', strConvertObj(string));
+
+
+  let btn = document.querySelector('.btn')
+  btn.addEventListener('click', e => {
+    e.preventDefault()
+    let eleObj = strConvertObj(string)
+    let ele = document.createElement(`${eleObj.tagName}`)
+    for (const key in eleObj.arrts) {
+      ele.setAttribute(key, eleObj.arrts[key])
+    }
+    document.body.appendChild(ele)
+  })
+
+</script>
+
+</html>
