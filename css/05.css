@@ -101,7 +101,6 @@
   margin-bottom: 60px;
 }
 .tab-top-left {
-  width: 220px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -113,18 +112,21 @@
 .home-ico {
   width: 16px;
   height: 12px;
+  margin-right: 5px;
 }
 .tab-top-right-active {
   color: #005ba8;
   border-bottom: 2px solid #005ba8;
 }
 .tab-top-right {
-  width: 450px;
   height: 100%;
 }
 .tab-top-right a {
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0 10px;
   height: 100%;
-  display: block;
   line-height: 55px;
 }
 .tab-main {
