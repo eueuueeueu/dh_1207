@@ -2,9 +2,6 @@
   width: 1228px;
   margin: 0 auto;
 }
-body {
-  height: 3000px;
-}
 /* 头部导航栏 */
 .head {
   display: flex;
