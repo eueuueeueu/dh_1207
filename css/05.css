@@ -35,21 +35,20 @@
 }
 /* banner图 */
 .banner {
-  position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 499px;
+  background: url(../imgs/contact_banner.png) no-repeat center;
   margin: 0 auto;
 }
 .banner img {
   width: 100%;
 }
 .banner_text {
-  position: absolute;
   width: 328px;
   height: 190px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 .about-jirui {
   text-align: center;
@@ -122,10 +121,10 @@
   height: 100%;
 }
 .tab-top-right a {
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
   height: 100%;
   line-height: 55px;
 }
@@ -283,15 +282,15 @@ padding: 0 10px;
   color: white;
   padding-top: 40px;
 }
-.footer dl{
+.footer dl {
   width: 150px;
   text-align: center;
-  border-right: 1px solid rgba(201, 201, 201,.3);
+  border-right: 1px solid rgba(201, 201, 201, 0.3);
 }
-.footer dl:first-child{
+.footer dl:first-child {
   margin-left: 120px;
 }
-.footer dl:last-child{
+.footer dl:last-child {
   width: 300px;
   text-align: start;
   margin-left: 45px;
@@ -303,16 +302,16 @@ padding: 0 10px;
   color: #fff;
   margin-bottom: 20px;
 }
-.footer dl dd a{
+.footer dl dd a {
   color: #666;
   font-size: 13px;
   line-height: 28px;
 }
-.footer .w{
+.footer .w {
   display: flex;
   justify-content: start;
 }
-.copyright{
+.copyright {
   text-align: center;
   color: #666;
   font-size: 13px;
